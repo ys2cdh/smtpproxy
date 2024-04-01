@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.4-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.funnysalt'
+version = '0.0.1-SNAPSHOT'
+
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+	//implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'junit:junit:4.13.1'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	implementation 'org.springframework:spring-context'
+	implementation 'org.springframework:spring-webmvc'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//netty
+	implementation 'io.netty:netty-all:4.1.80.Final'
+	implementation group: 'io.netty', name: 'netty-codec-smtp', version: '4.1.80.Final'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
